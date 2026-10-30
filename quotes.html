@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quotes - Simple Accounting</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* 极简排版，兼容深色模式 */
+        .quotes-container {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 40px 20px 80px;
+        }
+
+        .quotes-title {
+            font-size: 32px;
+            margin-bottom: 40px;
+            color: var(--text-color);
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 15px;
+        }
+
+        .quote-item {
+            margin-bottom: 35px;
+            padding-left: 20px;
+            border-left: 3px solid #3498db;
+        }
+
+        .quote-text {
+            font-size: 18px;
+            line-height: 1.7;
+            font-style: italic;
+            color: var(--text-color);
+            margin-bottom: 8px;
+        }
+
+        .quote-author {
+            font-size: 15px;
+            color: #7f8c8d;
+            text-align: right;
+        }
+
+        .quote-author::before {
+            content: "— ";
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div style="display: flex; justify-content: space-between; align-items: center; max-width: 600px; margin: 0 auto 10px;">
+            <h1 style="margin: 0;">💰 Simple Accounting</h1>
+            <!-- 保留深色模式切换按钮 -->
+            <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Dark Mode">🌙</button>
+        </div>
+        <nav aria-label="Main Menu">
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="records.html">Records</a></li>
+                <li><a href="stats.html">Statistics</a></li>
+                <li><a href="quotes.html" aria-current="page">Quotes</a></li> <!-- 新加的导航 -->
+                <li><a href="about.html">About</a></li>
+                <li><a href="author.html">Author</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="quotes-container">
+        <h1 class="quotes-title">Things worth reading twice</h1>
+
+        <!-- 名言列表 -->
+        <div class="quote-item">
+            <p class="quote-text">"The only way to do great work is to love what you do."</p>
+            <p class="quote-author">Steve Jobs</p>
+        </div>
+
+        <div class="quote-item">
+            <p class="quote-text">"The best way to predict the future is to create it."</p>
+            <p class="quote-author">Peter Drucker</p>
+        </div>
+
+        <div class="quote-item">
+            <p class="quote-text">"In the middle of difficulty lies opportunity."</p>
+            <p class="quote-author">Albert Einstein</p>
+        </div>
+
+        <div class="quote-item">
+            <p class="quote-text">"Simplicity is the ultimate sophistication."</p>
+            <p class="quote-author">Leonardo da Vinci</p>
+        </div>
+
+        <div class="quote-item">
+            <p class="quote-text">"Talk is cheap. Show me the code."</p>
+            <p class="quote-author">Linus Torvalds</p>
+        </div>
+
+        <div class="quote-item">
+            <p class="quote-text">"It does not matter how slowly you go as long as you do not stop."</p>
+            <p class="quote-author">Confucius</p>
+        </div>
+        
+        <div class="quote-item">
+            <p class="quote-text">"Stay hungry, stay foolish."</p>
+            <p class="quote-author">Steve Jobs</p>
+        </div>
+        
+        <div class="quote-item">
+            <p class="quote-text">"The journey of a thousand miles begins with a single step."</p>
+            <p class="quote-author">Lao Tzu</p>
+        </div>
+
+        <div class="quote-item">
+            <p class="quote-text">"You miss 100% of the shots you don't take."</p>
+            <p class="quote-author">Wayne Gretzky</p>
+        </div>
+
+        <div class="quote-item">
+            <p class="quote-text">"Imagination is more important than knowledge."</p>
+            <p class="quote-author">Albert Einstein</p>
+        </div>
+
+        <div class="quote-item">
+            <p class="quote-text">"We are what we repeatedly do. Excellence, then, is not an act, but a habit."</p>
+            <p class="quote-author">Aristotle</p>
+        </div>
+
+        <div class="quote-item">
+            <p class="quote-text">"Life is what happens when you're busy making other plans."</p>
+            <p class="quote-author">John Lennon</p>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Simple Accounting Project</p>
+    </footer>
+
+    <!-- 深色模式 JS 逻辑 -->
+    <script>
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        if (localStorage.getItem('theme') === 'dark') { 
+            document.body.classList.add('dark-mode'); 
+            if (themeToggleBtn) themeToggleBtn.textContent = '☀️'; 
+        }
+        if (themeToggleBtn) {
+            themeToggleBtn.addEventListener('click', () => {
+                document.body.classList.toggle('dark-mode');
+                if (document.body.classList.contains('dark-mode')) { 
+                    themeToggleBtn.textContent = '☀️'; 
+                    localStorage.setItem('theme', 'dark'); 
+                } else { 
+                    themeToggleBtn.textContent = '🌙'; 
+                    localStorage.setItem('theme', 'light'); 
+                }
+            });
+        }
+    </script>
+</body>
+</html>

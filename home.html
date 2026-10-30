@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Simple Accounting</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .container-wide {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: 1fr 2fr 1fr;
+            gap: 30px;
+            align-items: start;
+        }
+        .main-content { max-width: 600px; margin: 0 auto; width: 100%; }
+        .side-gallery { display: flex; flex-direction: column; gap: 20px; position: sticky; top: 30px; }
+        .side-gallery img { width: 100%; height: 220px; object-fit: cover; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); transition: transform 0.3s ease; }
+        .side-gallery img:hover { transform: scale(1.05); }
+        .hero-section { background: var(--card-bg); padding: 40px 30px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); margin-bottom: 30px; }
+        .hero-section h2 { font-size: 32px; color: var(--text-color); margin-bottom: 5px; }
+        .hero-section .subtitle { color: #7f8c8d; font-size: 16px; margin-bottom: 30px; border-bottom: 1px solid var(--border-color); padding-bottom: 20px; }
+        .hero-section h3 { font-size: 22px; margin-bottom: 15px; color: var(--text-color); }
+        .site-index-list { list-style-type: disc; margin-left: 20px; line-height: 2; }
+        .site-index-list li { color: var(--text-color); }
+        .site-index-list a { color: #3498db; text-decoration: underline; font-weight: 500; transition: color 0.2s; }
+        .site-index-list a:hover { color: var(--primary-color); }
+        @media (max-width: 1000px) {
+            .container-wide { grid-template-columns: 1fr; }
+            .side-gallery { position: static; flex-direction: row; justify-content: center; }
+            .side-gallery img { width: 48%; height: 150px; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div style="display: flex; justify-content: space-between; align-items: center; max-width: 600px; margin: 0 auto 10px;">
+            <h1 style="margin: 0;">💰 Simple Accounting</h1>
+            <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Dark Mode">🌙</button>
+        </div>
+        <nav aria-label="Main Menu">
+            <ul>
+                <li><a href="home.html" aria-current="page">Home</a ></li>
+                <li><a href="records.html">Records</a ></li>
+                <li><a href="stats.html">Statistics</a ></li>
+                <li><a href="quotes.html">Quotes</a></li>
+                <li><a href="about.html">About</a ></li>
+                <li><a href="author.html">Author</a ></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container-wide">
+        
+        <div class="side-gallery">
+            <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=600&auto=format&fit=crop" alt="Food 1">
+            <img src="https://images.unsplash.com/photo-1493770348161-369560ae357d?q=80&w=600&auto=format&fit=crop" alt="Food 2">
+        </div>
+
+        <div class="main-content">
+            <section class="hero-section">
+                <h2>Welcome to My Project</h2>
+                <p class="subtitle">Computer Science Final Project — a static web app built with pure HTML, CSS, and JS.</p >
+                
+                <h3>On this site</h3>
+                <ul class="site-index-list">
+                    <li><a href="#accounting-tool">Accounting Tool</a > — add new income and expenses below</li>
+                    <li><a href="records.html">Records</a > — view and manage your transaction history</li>
+                    <li><a href="stats.html">Statistics</a > — data analysis and spending overview</li>
+                    <li><a href="quotes.html">Quotes</a> — things worth reading twice</li>
+                    <li><a href="about.html">About</a > — how this project was built</li>
+                    <li><a href="author.html">Author Profile</a > — more about the developer behind this project</li>
+                </ul>
+            </section>
+
+            <div id="accounting-tool">
+                <section class="summary" aria-label="Account Summary">
+                    <div class="summary-item">
+                        <span>Total Balance</span>
+                        <strong class="balance" id="balance">0</strong>
+                    </div>
+                    <div class="summary-item">
+                        <span>Total Income</span>
+                        <strong class="income" id="income">0</strong>
+                    </div>
+                    <div class="summary-item">
+                        <span>Total Expense</span>
+                        <strong class="expense" id="expense">0</strong>
+                    </div>
+                </section>
+
+                <section class="form-card">
+                    <h2>Add New Record</h2>
+                    <form id="record-form">
+                        <div class="form-group">
+                            <label for="date" class="sr-only">Date</label>
+                            <input type="date" id="date" required>
+                            
+                            <label for="type" class="sr-only">Type</label>
+                            <select id="type" required>
+                                <option value="expense">Expense</option>
+                                <option value="income">Income</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="amount" class="sr-only">Amount</label>
+                            <input type="number" id="amount" placeholder="Amount" step="0.01" min="0" required>
+                            
+                            <label for="note" class="sr-only">Note</label>
+                            <input type="text" id="note" placeholder="Note (Optional)">
+                        </div>
+                        <button type="submit">Add Record</button>
+                    </form>
+                </section>
+            </div>
+        </div>
+
+        <div class="side-gallery">
+            <img src="https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?q=80&w=600&auto=format&fit=crop" alt="Food 3">
+            <img src="https://images.unsplash.com/photo-1482049016688-2d3e1b311543?q=80&w=600&auto=format&fit=crop" alt="Food 4">
+        </div>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Simple Accounting Project</p >
+    </footer>
+
+    <script>
+        const STORAGE_KEY = 'accounting_records';
+        function getRecords() { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || []; }
+        function renderSummary() {
+            const records = getRecords();
+            let totalIncome = 0, totalExpense = 0;
+            records.forEach(record => {
+                if (record.type === 'income') totalIncome += record.amount;
+                else totalExpense += record.amount;
+            });
+            document.getElementById('balance').textContent = (totalIncome - totalExpense).toFixed(2);
+            document.getElementById('income').textContent = totalIncome.toFixed(2);
+            document.getElementById('expense').textContent = totalExpense.toFixed(2);
+        }
+        document.getElementById('record-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const records = getRecords();
+            records.push({ id: Date.now().toString(), date: document.getElementById('date').value, type: document.getElementById('type').value, amount: parseFloat(document.getElementById('amount').value), note: document.getElementById('note').value.trim() });
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(records));
+            renderSummary();
+            document.getElementById('amount').value = '';
+            document.getElementById('note').value = '';
+            alert('Record added successfully!');
+        });
+        document.getElementById('date').valueAsDate = new Date();
+        renderSummary();
+
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        if (localStorage.getItem('theme') === 'dark') { document.body.classList.add('dark-mode'); if (themeToggleBtn) themeToggleBtn.textContent = '☀️'; }
+        if (themeToggleBtn) {
+            themeToggleBtn.addEventListener('click', () => {
+                document.body.classList.toggle('dark-mode');
+                if (document.body.classList.contains('dark-mode')) { themeToggleBtn.textContent = '☀️'; localStorage.setItem('theme', 'dark'); } 
+                else { themeToggleBtn.textContent = '🌙'; localStorage.setItem('theme', 'light'); }
+            });
+        }
+    </script>
+</body>
+</html>
