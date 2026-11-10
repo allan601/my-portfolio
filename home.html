@@ -6,9 +6,10 @@
     <title>Home - Simple Accounting</title>
     <link rel="stylesheet" href="style.css">
     <style>
+        /* 左右图片排版样式 */
         .container-wide {
             width: 100%;
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             padding: 20px;
             display: grid;
@@ -16,11 +17,42 @@
             gap: 30px;
             align-items: start;
         }
-        .main-content { max-width: 600px; margin: 0 auto; width: 100%; }
-        .side-gallery { display: flex; flex-direction: column; gap: 20px; position: sticky; top: 30px; }
-        .side-gallery img { width: 100%; height: 220px; object-fit: cover; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); transition: transform 0.3s ease; }
-        .side-gallery img:hover { transform: scale(1.05); }
-        .hero-section { background: var(--card-bg); padding: 40px 30px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); margin-bottom: 30px; }
+
+        .main-content {
+            max-width: 650px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .side-gallery {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            position: sticky;
+            top: 30px;
+        }
+
+        .side-gallery img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+        }
+
+        .side-gallery img:hover {
+            transform: scale(1.05);
+        }
+
+        /* 中间的欢迎卡片样式 */
+        .hero-section { 
+            background: var(--card-bg); 
+            padding: 40px 30px; 
+            border-radius: 8px; 
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05); 
+            margin-bottom: 30px; 
+        }
         .hero-section h2 { font-size: 32px; color: var(--text-color); margin-bottom: 5px; }
         .hero-section .subtitle { color: #7f8c8d; font-size: 16px; margin-bottom: 30px; border-bottom: 1px solid var(--border-color); padding-bottom: 20px; }
         .hero-section h3 { font-size: 22px; margin-bottom: 15px; color: var(--text-color); }
@@ -28,6 +60,8 @@
         .site-index-list li { color: var(--text-color); }
         .site-index-list a { color: #3498db; text-decoration: underline; font-weight: 500; transition: color 0.2s; }
         .site-index-list a:hover { color: var(--primary-color); }
+
+        /* 手机端适配 */
         @media (max-width: 1000px) {
             .container-wide { grid-template-columns: 1fr; }
             .side-gallery { position: static; flex-direction: row; justify-content: center; }
@@ -43,39 +77,43 @@
         </div>
         <nav aria-label="Main Menu">
             <ul>
-                <li><a href="home.html" aria-current="page">Home</a ></li>
-                <li><a href="records.html">Records</a ></li>
-                <li><a href="stats.html">Statistics</a ></li>
+                <li><a href="home.html" aria-current="page">Home</a></li>
+                <li><a href="records.html">Records</a></li>
+                <li><a href="stats.html">Statistics</a></li>
                 <li><a href="quotes.html">Quotes</a></li>
-                <li><a href="about.html">About</a ></li>
-                <li><a href="author.html">Author</a ></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="author.html">Author</a></li>
             </ul>
         </nav>
     </header>
 
     <main class="container-wide">
         
+        <!-- 左侧图库 -->
         <div class="side-gallery">
             <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=600&auto=format&fit=crop" alt="Food 1">
             <img src="https://images.unsplash.com/photo-1493770348161-369560ae357d?q=80&w=600&auto=format&fit=crop" alt="Food 2">
         </div>
 
+        <!-- 中间核心内容（欢迎卡片 + 表单） -->
         <div class="main-content">
+            <!-- 欢迎卡片 -->
             <section class="hero-section">
                 <h2>Welcome to My Project</h2>
-                <p class="subtitle">Computer Science Final Project — a static web app built with pure HTML, CSS, and JS.</p >
+                <p class="subtitle">Computer Science Final Project — a static web app built with pure HTML, CSS, and JS.</p>
                 
                 <h3>On this site</h3>
                 <ul class="site-index-list">
-                    <li><a href="#accounting-tool">Accounting Tool</a > — add new income and expenses below</li>
-                    <li><a href="records.html">Records</a > — view and manage your transaction history</li>
-                    <li><a href="stats.html">Statistics</a > — data analysis and spending overview</li>
+                    <li><a href="#accounting-tool">Accounting Tool</a> — add new income and expenses below</li>
+                    <li><a href="records.html">Records</a> — view and manage your transaction history</li>
+                    <li><a href="stats.html">Statistics</a> — data analysis and spending overview</li>
                     <li><a href="quotes.html">Quotes</a> — things worth reading twice</li>
-                    <li><a href="about.html">About</a > — how this project was built</li>
-                    <li><a href="author.html">Author Profile</a > — more about the developer behind this project</li>
+                    <li><a href="about.html">About</a> — how this project was built</li>
+                    <li><a href="author.html">Author Profile</a> — more about the developer behind this project</li>
                 </ul>
             </section>
 
+            <!-- 记账表单区域 -->
             <div id="accounting-tool">
                 <section class="summary" aria-label="Account Summary">
                     <div class="summary-item">
@@ -105,19 +143,38 @@
                                 <option value="income">Income</option>
                             </select>
                         </div>
+                        
                         <div class="form-group">
                             <label for="amount" class="sr-only">Amount</label>
                             <input type="number" id="amount" placeholder="Amount" step="0.01" min="0" required>
-                            
-                            <label for="note" class="sr-only">Note</label>
-                            <input type="text" id="note" placeholder="Note (Optional)">
                         </div>
+
+                        <div class="form-group">
+                            <label for="note" class="sr-only">Category</label>
+                            <select id="note" required>
+                                <option value="" disabled selected>Select a category...</option>
+                                <option value="Food">🍔 Food</option>
+                                <option value="Transport">🚗 Transport</option>
+                                <option value="Shopping">🛍️ Shopping</option>
+                                <option value="Entertainment">🎮 Entertainment</option>
+                                <option value="Salary">💰 Salary</option>
+                                <option value="Other">📦 Other (Custom)</option>
+                            </select>
+                        </div>
+
+                        <!-- 隐藏的自定义输入框 -->
+                        <div class="form-group" id="custom-note-group" style="display: none;">
+                            <label for="custom-note" class="sr-only">Custom Note</label>
+                            <input type="text" id="custom-note" placeholder="Please specify your custom category...">
+                        </div>
+
                         <button type="submit">Add Record</button>
                     </form>
                 </section>
             </div>
         </div>
 
+        <!-- 右侧图库 -->
         <div class="side-gallery">
             <img src="https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?q=80&w=600&auto=format&fit=crop" alt="Food 3">
             <img src="https://images.unsplash.com/photo-1482049016688-2d3e1b311543?q=80&w=600&auto=format&fit=crop" alt="Food 4">
@@ -126,12 +183,16 @@
     </main>
 
     <footer>
-        <p>&copy; 2026 Simple Accounting Project</p >
+        <p>&copy; 2026 Simple Accounting Project</p>
     </footer>
 
     <script>
+        // ========== 记账核心逻辑 ==========
         const STORAGE_KEY = 'accounting_records';
-        function getRecords() { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || []; }
+        function getRecords() { 
+            return JSON.parse(localStorage.getItem(STORAGE_KEY)) || []; 
+        }
+
         function renderSummary() {
             const records = getRecords();
             let totalIncome = 0, totalExpense = 0;
@@ -143,26 +204,77 @@
             document.getElementById('income').textContent = totalIncome.toFixed(2);
             document.getElementById('expense').textContent = totalExpense.toFixed(2);
         }
+
+        // ========== 下拉框联动逻辑 ==========
+        const noteSelect = document.getElementById('note');
+        const customNoteGroup = document.getElementById('custom-note-group');
+        const customNoteInput = document.getElementById('custom-note');
+
+        noteSelect.addEventListener('change', function() {
+            if (this.value === 'Other') {
+                customNoteGroup.style.display = 'flex';
+                customNoteInput.required = true;
+            } else {
+                customNoteGroup.style.display = 'none';
+                customNoteInput.required = false;
+                customNoteInput.value = '';
+            }
+        });
+
+        // ========== 表单提交逻辑 ==========
         document.getElementById('record-form').addEventListener('submit', function(e) {
-            e.preventDefault();
+            e.preventDefault(); 
+            
+            const dateVal = document.getElementById('date').value;
+            const typeVal = document.getElementById('type').value;
+            const amountVal = parseFloat(document.getElementById('amount').value);
+            
+            let finalNote = noteSelect.value;
+            if (finalNote === 'Other') {
+                finalNote = customNoteInput.value.trim();
+            }
+
             const records = getRecords();
-            records.push({ id: Date.now().toString(), date: document.getElementById('date').value, type: document.getElementById('type').value, amount: parseFloat(document.getElementById('amount').value), note: document.getElementById('note').value.trim() });
+            records.push({ 
+                id: Date.now().toString(), 
+                date: dateVal, 
+                type: typeVal, 
+                amount: amountVal, 
+                note: finalNote 
+            });
+            
             localStorage.setItem(STORAGE_KEY, JSON.stringify(records));
             renderSummary();
+            
+            // 重置表单
             document.getElementById('amount').value = '';
-            document.getElementById('note').value = '';
+            document.getElementById('custom-note').value = '';
+            noteSelect.selectedIndex = 0; 
+            customNoteGroup.style.display = 'none'; 
+            
             alert('Record added successfully!');
         });
+
+        // 初始化
         document.getElementById('date').valueAsDate = new Date();
         renderSummary();
 
+        // ========== 深色模式逻辑 ==========
         const themeToggleBtn = document.getElementById('theme-toggle');
-        if (localStorage.getItem('theme') === 'dark') { document.body.classList.add('dark-mode'); if (themeToggleBtn) themeToggleBtn.textContent = '☀️'; }
+        if (localStorage.getItem('theme') === 'dark') { 
+            document.body.classList.add('dark-mode'); 
+            if (themeToggleBtn) themeToggleBtn.textContent = '☀️'; 
+        }
         if (themeToggleBtn) {
             themeToggleBtn.addEventListener('click', () => {
                 document.body.classList.toggle('dark-mode');
-                if (document.body.classList.contains('dark-mode')) { themeToggleBtn.textContent = '☀️'; localStorage.setItem('theme', 'dark'); } 
-                else { themeToggleBtn.textContent = '🌙'; localStorage.setItem('theme', 'light'); }
+                if (document.body.classList.contains('dark-mode')) { 
+                    themeToggleBtn.textContent = '☀️'; 
+                    localStorage.setItem('theme', 'dark'); 
+                } else { 
+                    themeToggleBtn.textContent = '🌙'; 
+                    localStorage.setItem('theme', 'light'); 
+                }
             });
         }
     </script>

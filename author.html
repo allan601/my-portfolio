@@ -3,100 +3,209 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Author - Simple Accounting</title>
+    <title>Author & Life</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        .profile-card { text-align: center; background: var(--card-bg); padding: 40px 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); margin-bottom: 20px; }
+        /* 核心布局：撑满全屏，把页脚推到最底 */
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .main-container {
+            flex: 1; 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        /* ====== 作者名片样式 ====== */
+        .profile-card { 
+            text-align: center; 
+            background: var(--card-bg); 
+            padding: 40px 20px; 
+            border-radius: 8px; 
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05); 
+            margin-bottom: 30px; 
+            width: 100%;
+        }
         .profile-avatar { font-size: 80px; margin-bottom: 10px; }
-        .profile-card h2 { color: var(--text-color); margin-bottom: 5px; }
+        .profile-card h2 { color: var(--text-color); margin-bottom: 5px; font-size: 28px; }
         .profile-card .role { color: #7f8c8d; font-size: 16px; margin-bottom: 20px; }
+        
         .contact-links { margin-top: 20px; display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
         .contact-links a { text-decoration: none; color: white; background: #3498db; padding: 8px 16px; border-radius: 4px; font-size: 14px; transition: background 0.2s; }
         .contact-links a:hover { background: #2980b9; }
-        .profile-text { text-align: left; margin-top: 30px; line-height: 1.8; color: var(--text-color); }
+
+        /* ====== 个人介绍样式 ====== */
+        .about-card {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            width: 100%;
+            margin-bottom: 40px;
+        }
+        .about-card h2 { margin-bottom: 20px; color: var(--text-color); }
+        .profile-text { text-align: left; line-height: 1.8; color: var(--text-color); }
+        .profile-text p { margin-bottom: 15px; }
+        
+        .quote-box {
+            margin-top: 20px;
+            padding: 15px;
+            background: var(--bg-color);
+            border-left: 4px solid #f39c12;
+            font-style: italic;
+            color: #555;
+            border-radius: 4px;
+        }
+        body.dark-mode .quote-box { color: #ccc; background: #2c2c2c; }
+
+        /* ====== 照片墙样式 ====== */
+        .photo-section {
+            width: 100%;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .photo-section h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+            color: var(--text-color);
+        }
+        .photo-section p {
+            color: #7f8c8d;
+            margin-bottom: 30px;
+        }
+        
+        .gallery-row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+        .gallery-row img {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 50%;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        .gallery-row img:hover {
+            transform: translateY(-10px) scale(1.05);
+        }
+
+        /* ====== 底部版权 ====== */
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #95a5a6;
+            font-size: 14px;
+            border-top: 1px solid var(--border-color);
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        /* 手机端适配 */
+        @media (max-width: 768px) {
+            .gallery-row { gap: 15px; }
+            .gallery-row img { width: 100px; height: 100px; }
+        }
     </style>
 </head>
 <body>
+    <!-- 顶部导航 -->
     <header>
-        <div style="display: flex; justify-content: space-between; align-items: center; max-width: 600px; margin: 0 auto 10px;">
-            <h1 style="margin: 0;">💰 Simple Accounting</h1>
+        <div style="display: flex; justify-content: space-between; align-items: center; max-width: 600px; margin: 0 auto 10px; padding-top: 20px;">
+            <h1 style="margin: 0; font-size: 24px;">💰 Simple Accounting</h1>
             <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Dark Mode">🌙</button>
         </div>
         <nav aria-label="Main Menu">
             <ul>
-                <li><a href="home.html">Home</a ></li>
-                <li><a href="records.html">Records</a ></li>
-                <li><a href="stats.html">Statistics</a ></li>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="records.html">Records</a></li>
+                <li><a href="stats.html">Statistics</a></li>
                 <li><a href="quotes.html">Quotes</a></li>
-                <li><a href="about.html">About</a ></li>
-                <li><a href="author.html" aria-current="page">Author</a ></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="author.html" aria-current="page">Author</a></li>
             </ul>
         </nav>
     </header>
 
-    <main class="container">
+    <!-- 核心内容区 -->
+    <main class="main-container">
+        
+        <!-- 1. 作者名片 -->
         <section class="profile-card">
             <div class="profile-avatar">👨‍💻</div>
-            <!-- 这里你可以把 Allan 换成你的真实名字 -->
-            <h2>春晓寒冬</h2>
-            <p class="role">Computer Science Student & Front-End Developer</p >
-            
+            <h2>春晓寒冬</h2> 
+            <p class="role">Computer Science Student & Front-End Developer</p>
             <div class="contact-links">
-                <a href="https://github.com/allan601" target="_blank">GitHub</a >
-                <a href="mailto:your-email@example.com">Email Me</a >
+                <a href="https://github.com/allan601" target="_blank">GitHub</a>
+                <a href="mailto:391759687@qq.com">Email Me</a>
             </div>
         </section>
 
-        <section class="form-card">
+        <!-- 2. 个人文字介绍 -->
+        <section class="about-card">
             <h2>About Me</h2>
             <div class="profile-text">
-                <p>Hello! I am a  Computer Science student in BIUH. I enjoy building clean, responsive, and accessible web applications.</p >
-                <br>
-                <p><strong>Skills:</strong> HTML, CSS, JavaScript,  Design.</p >
-                <br>
-                <p>I created this "Simple Accounting" project to help people track their daily expenses easily without the need for complex software or accounts.</p >
-                <br>
-                <p><strong>Quotes:</strong> "The best way to predict the future is to create it." - Peter Drucker</p >   
+                <p>Hello! I am a passionate Computer Science student. I enjoy building clean, responsive, and accessible web applications.</p>
+                <p><strong>Skills:</strong> HTML5, CSS3, JavaScript, Git, UI/UX Design.</p>
+                <p>I created this "Simple Accounting" project to help people track their daily expenses easily without the need for complex software or accounts.</p>
+                <div class="quote-box">
+                    "The best way to predict the future is to create it." — Peter Drucker
+                </div>
             </div>
         </section>
+
+        <!-- 3. 照片画廊（居中） -->
+        <section class="photo-section">
+            <h1>Life is Live</h1>
+            <p>Capturing moments, from the cute alpaca to the beautiful seascape.</p>
+            
+            <div class="gallery-row">
+                <!-- 确保你的文件夹里有这三张照片 -->
+                <img src="pic1.jpg.jpg" alt="Alpaca">
+                <img src="pic2.jpg.jpg" alt="Seascape">
+                <img src="pic3.jpg.jpg" alt="Sailboats">
+            </div>
+        </section>
+
     </main>
 
+    <!-- 底部版权（死死贴在页面最底下） -->
     <footer>
-        <p>&copy; 2026 Simple Accounting Project</p >
+        <p>&copy; 2026 Simple Accounting Project</p>
     </footer>
 
+    <!-- 深色模式 JS -->
     <script>
         const themeToggleBtn = document.getElementById('theme-toggle');
-        if (localStorage.getItem('theme') === 'dark') { document.body.classList.add('dark-mode'); if (themeToggleBtn) themeToggleBtn.textContent = '☀️'; }
+        if (localStorage.getItem('theme') === 'dark') { 
+            document.body.classList.add('dark-mode'); 
+            if (themeToggleBtn) themeToggleBtn.textContent = '☀️'; 
+        }
         if (themeToggleBtn) {
             themeToggleBtn.addEventListener('click', () => {
                 document.body.classList.toggle('dark-mode');
-                if (document.body.classList.contains('dark-mode')) { themeToggleBtn.textContent = '☀️'; localStorage.setItem('theme', 'dark'); } 
-                else { themeToggleBtn.textContent = '🌙'; localStorage.setItem('theme', 'light'); }
+                if (document.body.classList.contains('dark-mode')) { 
+                    themeToggleBtn.textContent = '☀️'; 
+                    localStorage.setItem('theme', 'dark'); 
+                } else { 
+                    themeToggleBtn.textContent = '🌙'; 
+                    localStorage.setItem('theme', 'light'); 
+                }
             });
         }
     </script>
-        <!-- 主体内容 -->
-    <main class="page-container">
-        <h1>Life is Live</h1>
-        <p class="intro-text">Capturing moments, from the cute alpaca to the beautiful seascape. Written by hand, captured by heart.</p>
-
-        <div class="photo-gallery">
-            <!-- 第一张大图（羊驼） -->
-            <div class="photo-card full-width">
-                <img src="pic1.jpg.jpg" alt="A cute alpaca in the lobby">
-            </div>
-
-            <!-- 第二张图（拱门海景） -->
-            <div class="photo-card half-width">
-                <img src="pic2.jpg.jpg" alt="A beautiful ocean view through an archway">
-            </div>
-
-            <!-- 第三张图（帆船） -->
-            <div class="photo-card half-width">
-                <img src="pic3.jpg.jpg" alt="Sailboats on the blue sea">
-            </div>
-        </div>
-    </main>
 </body>
 </html>
